@@ -1,4 +1,4 @@
-export type Listener = (type: string, payload: any) => void;
+export type Listener = (payload: any) => void;
 
 export default class Hub {
   listeners: { [x: string]: Listener } = {};
@@ -28,7 +28,7 @@ export default class Hub {
 
     const listener = this.listeners[type];
     if (listener) {
-      listener(type, payload);
+      listener(payload);
     }
   }
 }
